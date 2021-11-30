@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +7,11 @@ import backgroundImage from './../assets/img/login_img.svg';
 
 const Login = () => {
   const navigate = useNavigate();
+  const [passwordShown, setPasswordShown] = useState(false);
+
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(passwordShown ? false : true);
+  };
   const {
     register,
     handleSubmit,
@@ -24,35 +29,45 @@ const Login = () => {
       </figure>
       <form onSubmit={handleSubmit(onSubmit)} className="login__form">
         <h2 className="login__title">Voice Authentication Login</h2>
-        <label className="login__text">Email</label>
-        <input
-          placeholder="hello@example.com"
-          className="login__input"
-          {...register('email', {
-            required: true,
-            pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: 'Email invalido'
-            }
-          })}
-        />
-        {errors?.email?.type === 'required' && <p>Este campo es requerido</p>}
-        {errors.email?.message && <p>{errors.email?.message}</p>}
+        <label className="login__text">
+          Email
+          <input
+            placeholder="hello@example.com"
+            className="login__input"
+            {...register('email', {
+              required: true,
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: 'Email invalido'
+              }
+            })}
+          />
+        </label>
+        {errors?.email?.type === 'required' && (
+          <p className="login__error">Este campo es requerido</p>
+        )}
+        {errors.email?.message && <p className="login__error">{errors.email?.message}</p>}
 
-        <label className="login__text">Password</label>
-        <input
-          placeholder="********"
-          className="login__input"
-          {...register('contrasena', {
-            required: true,
-            minLength: {
-              value: 6,
-              message: 'La contraseña debe tener almenos 6 caracteres'
-            }
-          })}
-        />
-        {errors?.contrasena?.type === 'required' && <p>Este campo es requerido</p>}
-        {errors.contrasena?.message && <p>{errors.contrasena?.message}</p>}
+        <label className="login__text">
+          Password
+          <input
+            type={passwordShown ? 'text' : 'password'}
+            placeholder="********"
+            className="login__input"
+            {...register('contrasena', {
+              required: true,
+              minLength: {
+                value: 6,
+                message: 'La contraseña debe tener almenos 6 caracteres'
+              }
+            })}
+          />
+          <i onClick={togglePasswordVisiblity} className="bx bx-show login__password--show" />
+        </label>
+        {errors?.contrasena?.type === 'required' && (
+          <p className="login__error">Este campo es requerido</p>
+        )}
+        {errors.contrasena?.message && <p className="login__error">{errors.contrasena?.message}</p>}
         <button type="submit" className="login__cta">
           Login
         </button>
