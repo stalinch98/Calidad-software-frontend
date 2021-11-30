@@ -6,7 +6,7 @@ function Footer() {
     <footer id="footer" className="pb-4 pt-4">
       <div className="container">
         <div className="row text-center">
-          <h3>Desarrollado por Furok's Company</h3>
+          <h3>Desarrollado por Furok&apos;s Company</h3>
         </div>
       </div>
     </footer>

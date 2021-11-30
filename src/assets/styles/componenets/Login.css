@@ -1,51 +1,134 @@
-.login form {
-  max-width: 500px;
-  margin: 0 auto;
+/* VARIABLES */
+:root {
+    --font: "Inter", sans-serif;
+    --contact-colum: repeat(8, 1fr);
+    --contact-row: 1fr;
+    --clip: polygon(36% 0, 100% 0, 100% 100%, 0% 100%);
+    --color-primary: #3535aa;
+    --text-color: #f6f4f4
 }
 
-.login p {
-  color: #bf1650;
+.login {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: var(--contact-colum);
+    grid-template-rows: var(--contact-row);
+
 }
 
-.login p::before {
-  display: inline;
-  content: '⚠ ';
+.login__picture {
+    grid-column: 5/-1;
+    grid-row: 1/-1;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
 }
 
-.login input {
-  display: block;
-  box-sizing: border-box;
-  width: 100%;
-  border-radius: 4px;
-  border: 1px solid white;
-  padding: 10px 15px;
-  margin-bottom: 10px;
-  font-size: 14px;
+.login__picture::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--color-primary);
+    z-index: -1;
+    clip-path: var(--clip);
 }
 
-.login label {
-  line-height: 2;
-  text-align: left;
-  display: block;
-  margin-bottom: 13px;
-  margin-top: 20px;
-  color: white;
-  font-size: 14px;
-  font-weight: 200;
+.login__img {
+    width: 90%;
+    height: 90vh;
 }
 
-.login input[type='submit'] {
-  background: #ec5990;
-  color: white;
-  text-transform: uppercase;
-  border: none;
-  margin-top: 40px;
-  padding: 20px;
-  font-size: 16px;
-  font-weight: 100;
-  letter-spacing: 10px;
+.login__form {
+    grid-column: 1/5;
+    grid-row: 1/-1;
+    place-self: center;
+    display: grid; /* grid del formulario*/
+    width: 70%;
+    gap: 15px;
 }
 
-.login input[type='submit']:hover {
-  background: #bf1650;
+.login__title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.login__text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* importa que sea after para que se ponga despues*/
+.login__title::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: var(--color-primary);
+    margin-top: 10px;
+}
+
+.login__input {
+    padding: 18px 10px;
+    font-family: var(--font);
+    width: 100%;
+    border: 1px solid #000;
+    border-radius: 2px;
+}
+
+.login__cta {
+    display: block;
+    background: var(--color-primary);
+    width: 200px;
+    color: #fff;
+    font-family: var(--font);
+    padding: 18px 0;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+    box-shadow: 0 2px 10px -4px rgba(0, 0, 0, 0.5);
+}
+.login__options{
+    color: var(--text-color);
+    display: flex;
+    justify-content: space-between;
+}
+/* ============== RESPONSIVE DESING =============== */
+
+@media screen and (max-width: 768px) {
+    :root {
+        --font: "Inter", sans-serif;
+        --clip: polygon(0 0, 0% 100%, 100% 0);
+        --contact-colum: 1fr;
+        --contact-row: max-content 1fr;
+    }
+
+    .login__form {
+        grid-column: 1/-1;
+        grid-row: 1/2;
+
+        padding: 40px 0 40px;
+        width: 90%;
+        z-index: 10;
+    }
+
+    .login__picture {
+        grid-column: 1/-1;
+        grid-row: 1/2;
+
+        justify-content: center;
+        padding-top: 20px;
+    }
+
+    .login__img {
+        max-width: 400px;
+    }
 }

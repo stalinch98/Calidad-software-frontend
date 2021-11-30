@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import Footer from '../components/Footer';
 import '../assets/styles/componenets/Login.css';
+import backgroundImage from './../assets/img/login_img.svg';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -19,9 +19,15 @@ const Login = () => {
   };
   return (
     <section className="login">
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label>Email</label>
+      <figure className="login__picture">
+        <img className="login__img" src={backgroundImage} alt="contact img" />
+      </figure>
+      <form onSubmit={handleSubmit(onSubmit)} className="login__form">
+        <h2 className="login__title">Voice Authentication Login</h2>
+        <label className="login__text">Email</label>
         <input
+          placeholder="hello@example.com"
+          className="login__input"
           {...register('email', {
             required: true,
             pattern: {
@@ -33,8 +39,10 @@ const Login = () => {
         {errors?.email?.type === 'required' && <p>Este campo es requerido</p>}
         {errors.email?.message && <p>{errors.email?.message}</p>}
 
-        <label>Contraseña</label>
+        <label className="login__text">Password</label>
         <input
+          placeholder="********"
+          className="login__input"
           {...register('contrasena', {
             required: true,
             minLength: {
@@ -45,12 +53,18 @@ const Login = () => {
         />
         {errors?.contrasena?.type === 'required' && <p>Este campo es requerido</p>}
         {errors.contrasena?.message && <p>{errors.contrasena?.message}</p>}
-        <input type="submit" />
-        <div>
-          <Link to="/register">Registrate</Link>
-        </div>
+        <button type="submit" className="login__cta">
+          Login
+        </button>
+        <section className="login__options">
+          <p>
+            New in our app? <Link to="/register">Sign up</Link>
+          </p>
+          <p>
+            Forgot your password? <Link to="/register">Click here</Link>
+          </p>
+        </section>
       </form>
-      <Footer />
     </section>
   );
 };
