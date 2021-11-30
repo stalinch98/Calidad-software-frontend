@@ -58,10 +58,16 @@ const Login = () => {
         </button>
         <section className="login__options">
           <p>
-            New in our app? <Link to="/register">Sign up</Link>
+            New in our app?{' '}
+            <Link className="login__link" to="/register">
+              Sign up
+            </Link>
           </p>
           <p>
-            Forgot your password? <Link to="/register">Click here</Link>
+            Forgot your password?{' '}
+            <Link className="login__link" to="/register">
+              Click here
+            </Link>
           </p>
         </section>
       </form>

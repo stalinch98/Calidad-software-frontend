@@ -1,6 +1,6 @@
 /* VARIABLES */
 :root {
-    --font: "Inter", sans-serif;
+    --font: "Roboto", sans-serif;;
     --contact-colum: repeat(8, 1fr);
     --contact-row: 1fr;
     --clip: polygon(36% 0, 100% 0, 100% 100%, 0% 100%);
@@ -60,9 +60,16 @@
 }
 
 .login__text {
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 1.2rem;
+    font-weight: 500;
     color: var(--text-color);
+}
+
+.login__link{
+    color: var(--text-color);
+}
+.login__link:hover{
+    color: var(--color-primary);
 }
 
 /* importa que sea after para que se ponga despues*/
@@ -87,20 +94,23 @@
     display: block;
     background: var(--color-primary);
     width: 200px;
-    color: #fff;
+    color: var(--text-color);
     font-family: var(--font);
-    padding: 18px 0;
+    padding: 13px 0;
     outline: none;
     border: none;
     border-radius: 6px;
     font-weight: 700;
+    font-size: 20px;
     box-shadow: 0 2px 10px -4px rgba(0, 0, 0, 0.5);
 }
-.login__options{
+
+.login__options {
     color: var(--text-color);
     display: flex;
     justify-content: space-between;
 }
+
 /* ============== RESPONSIVE DESING =============== */
 
 @media screen and (max-width: 768px) {
