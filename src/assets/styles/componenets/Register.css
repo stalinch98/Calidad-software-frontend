@@ -18,7 +18,8 @@
 .register__progressbar div {
     width: 33.3%;
     height: 100%;
-    background-color: rgb(98, 0, 255);
+    background-color: #F1683F;
+    transition: .8s;
 }
 
 .register__header {
@@ -62,7 +63,7 @@
 .register__cta {
 
     display: block;
-    background: #F1683F;
+    background: #9F22E3;
     width: 150px;
     color: var(--text-color);
     font-family: var(--font);
@@ -73,6 +74,10 @@
     font-weight: 700;
     font-size: 20px;
     box-shadow: 0 2px 10px -4px rgba(0, 0, 0, 0.5);
+}
+
+.register__cta:nth-child(2) {
+    background: #6208FE;
 }
 
 .register__text {
