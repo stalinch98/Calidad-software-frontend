@@ -1,113 +1,121 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const OtherInfo = ({ formData, setFormData }) => {
+const OtherInfo = ({ formData, error, handleBlur, handleChange }) => {
   return (
     <>
       <label className="register__text">
-        Fecha de Nacimiento
+        Date of Birth
         <input
+          name="dateBirth"
           className="register__input"
           type="date"
           value={formData.dateBirth}
-          onChange={(e) => {
-            setFormData({ ...formData, dateBirth: e.target.value });
-          }}
+          onBlur={handleBlur}
+          onChange={handleChange}
         />
+        {error.dateBirth && <p className="register__error">{error.dateBirth}</p>}
       </label>
+
       <label className="register__text">
-        Genero
+        Gender
         <select
+          name="gender"
           className="register__input"
           value={formData.gender}
-          onChange={(e) => {
-            setFormData({ ...formData, gender: e.target.value });
-          }}>
-          <option name="genero" value="hombre">
-            Hombre
+          onBlur={handleBlur}
+          onChange={handleChange}>
+          <option name="genero" value="man">
+            Man
           </option>
-          <option name="genero" value="mujer">
-            Mujer
+          <option name="genero" value="woman">
+            Woman
           </option>
-          <option name="genero" value="prefiero no decir">
-            Prefiero no decir
+          <option name="genero" value="other">
+            Other
           </option>
         </select>
+        {error.gender && <p className="register__error">{error.gender}</p>}
       </label>
+
       <label className="register__text">
-        Estado Civil
+        Civil Status
         <select
+          name="civilStatus"
           className="register__input"
           value={formData.civilStatus}
-          onChange={(e) => {
-            setFormData({ ...formData, civilStatus: e.target.value });
-          }}>
-          <option name="estadoCivil" value="Soltero">
-            Soltero
+          onBlur={handleBlur}
+          onChange={handleChange}>
+          <option name="civilStatus" value="single">
+            Single
           </option>
-          <option name="estadoCivil" value="Casado">
-            Casado
+          <option name="civilStatus" value="married">
+            Married
           </option>
-
-          <option name="estadoCivil" value="Divorciado">
-            Divorciado
+          <option name="civilStatus" value="divorced">
+            Divorced
           </option>
-          <option name="estadoCivil" value="Viudo">
-            Viudo
+          <option name="civilStatus" value="widower">
+            Widower
           </option>
         </select>
+        {error.civilStatus && <p className="register__error">{error.civilStatus}</p>}
       </label>
       <label className="register__text">
-        Codigo Postal
+        Postal Code
         <input
+          name="postalCode"
           type="number"
           className="register__input"
           value={formData.postalCode}
-          onChange={(e) => {
-            setFormData({ ...formData, postalCode: e.target.value });
-          }}
+          onBlur={handleBlur}
+          onChange={handleChange}
         />
+        {error.postalCode && <p className="register__error">{error.postalCode}</p>}
       </label>
       <label className="register__text">
-        Tipo de sangre
+        Blood Type
         <select
+          name="bloodType"
           className="register__input"
           value={formData.bloodType}
-          onChange={(e) => {
-            setFormData({ ...formData, bloodType: e.target.value });
-          }}>
-          <option name="tipoSangre" value="Tipo A+">
-            Tipo A+
+          onBlur={handleBlur}
+          onChange={handleChange}>
+          <option name="tipoSangre" value="Type A+">
+            Type A+
           </option>
-          <option name="tipoSangre" value="Tipo A-">
-            Tipo A-
+          <option name="tipoSangre" value="Type A-">
+            Type A-
           </option>
-          <option name="tipoSangre" value="Tipo B+">
-            Tipo B+
+          <option name="tipoSangre" value="Type B+">
+            Type B+
           </option>
-          <option name="tipoSangre" value="Tipo B-">
-            Tipo B-
+          <option name="tipoSangre" value="Type B-">
+            Type B-
           </option>
-          <option name="tipoSangre" value="Tipo AB+">
-            Tipo AB+
+          <option name="tipoSangre" value="Type AB+">
+            Type AB+
           </option>
-          <option name="tipoSangre" value="Tipo AB-">
-            Tipo AB-
+          <option name="tipoSangre" value="Type AB-">
+            Type AB-
           </option>
-          <option name="tipoSangre" value="Tipo O+">
-            Tipo O+
+          <option name="tipoSangre" value="Type O+">
+            Type O+
           </option>
-          <option name="tipoSangre" value="Tipo O-">
-            Tipo O-
+          <option name="tipoSangre" value="Type O-">
+            Type O-
           </option>
         </select>
+        {error.bloodType && <p className="register__error">{error.bloodType}</p>}
       </label>
     </>
   );
 };
 OtherInfo.propTypes = {
   formData: PropTypes.object,
-  setFormData: PropTypes.func
+  handleBlur: PropTypes.func,
+  handleChange: PropTypes.func,
+  error: PropTypes.object
 };
 
 export default OtherInfo;

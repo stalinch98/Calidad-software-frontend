@@ -1,79 +1,85 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SignUpInfo = ({ formData, setFormData }) => {
+const SignUpInfo = ({ formData, error, handleBlur, handleChange }) => {
   return (
     <>
       <label className="register__text">
-        Nombre
+        Name
         <input
+          name="name"
           type="text"
-          value={formData.name}
-          onChange={(e) => {
-            setFormData({ ...formData, name: e.target.value });
-          }}
           className="register__input"
+          value={formData.name}
+          onBlur={handleBlur}
+          onChange={handleChange}
         />
+        {error.name && <p className="register__error">{error.name}</p>}
       </label>
 
       <label className="register__text">
-        Apellido
+        Last name
         <input
+          name="lastName"
           type="text"
           className="register__input"
           value={formData.lastName}
-          onChange={(e) => {
-            setFormData({ ...formData, lastName: e.target.value });
-          }}
+          onChange={handleChange}
+          onBlur={handleBlur}
         />
+        {error.lastName && <p className="register__error">{error.lastName}</p>}
       </label>
 
       <label className="register__text">
-        Edad
+        Age
         <input
+          name="age"
           type="number"
           className="register__input"
           value={formData.age}
-          onChange={(e) => {
-            setFormData({ ...formData, age: e.target.value });
-          }}
+          onChange={handleChange}
+          onBlur={handleBlur}
         />
+        {error.age && <p className="register__error">{error.age}</p>}
       </label>
 
       <label className="register__text">
         Email
         <input
+          name="email"
           type="email"
           className="register__input"
           value={formData.email}
-          onChange={(e) => {
-            setFormData({ ...formData, email: e.target.value });
-          }}
+          onChange={handleChange}
+          onBlur={handleBlur}
         />
+        {error.email && <p className="register__error">{error.email}</p>}
       </label>
 
       <label className="register__text">
-        Contraseña
+        Password
         <input
+          name="password"
           type="password"
           className="register__input"
           value={formData.password}
-          onChange={(e) => {
-            setFormData({ ...formData, password: e.target.value });
-          }}
+          onChange={handleChange}
+          onBlur={handleBlur}
         />
+        {error.password && <p className="register__error">{error.password}</p>}
       </label>
 
       <label className="register__text">
-        Confirmar Contraseña
+        Confirm password
         <input
+          name="passwordConfirm"
           type="password"
           className="register__input"
-          value={formData.confirmPassword}
-          onChange={(e) => {
-            setFormData({ ...formData, confirmPassword: e.target.value });
-          }}
+          value={formData.passwordConfirm}
+          onChange={handleChange}
+          onBlur={handleBlur}
         />
+        {error.passwordConfirm && <p className="register__error">{error.passwordConfirm}</p>}
       </label>
     </>
   );
@@ -81,7 +87,9 @@ const SignUpInfo = ({ formData, setFormData }) => {
 
 SignUpInfo.propTypes = {
   formData: PropTypes.object,
-  setFormData: PropTypes.func
+  handleBlur: PropTypes.func,
+  handleChange: PropTypes.func,
+  error: PropTypes.object
 };
 
 export default SignUpInfo;

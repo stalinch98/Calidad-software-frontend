@@ -32,7 +32,7 @@
     font-size: 2.5rem;
     font-weight: bold;
     color: var(--text-color);
-    margin-bottom: 15px;
+    margin-bottom: 4px;
 }
 
 .register__form {
@@ -40,6 +40,9 @@
     background-color: rgba(255, 255, 255, 0.4);
     border-radius: 8px;
     box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    margin: 0 15px;
+
 }
 
 .register__body {
@@ -51,7 +54,7 @@
 
 .register__footer {
     width: 100%;
-    margin-top: 10px;
+    margin: 15px 0 30px 0;
     flex: 20%;
     display: flex;
     align-items: center;
@@ -95,5 +98,14 @@
     margin-top: 10px;
     outline: none;
     border: none;
+}
 
+.register__error {
+    color: #910000;
+    font-weight: 500;
+}
+
+.register__error::before {
+    display: inline;
+    content: "⚠ ";
 }
