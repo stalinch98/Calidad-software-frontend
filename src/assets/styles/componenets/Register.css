@@ -1,51 +1,94 @@
-.register form {
-  max-width: 500px;
-  margin: 0 auto;
+.register {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to right top, #f1683f, #fa4c54, #fc2a6f, #f4008e, #df00b1, #ce00c3, #b700d5, #941ae9, #8a14ee, #7f0ff3, #720af9, #6208fe);
 }
 
-.register p {
-  color: #bf1650;
+.register__progressbar {
+    width: 400px;
+    height: 10px;
+    background-color: white;
+    margin: 15px 0 15px 0;
 }
 
-.register p::before {
-  display: inline;
-  content: '⚠ ';
+.register__progressbar div {
+    width: 33.3%;
+    height: 100%;
+    background-color: rgb(98, 0, 255);
 }
 
-.register input {
-  display: block;
-  box-sizing: border-box;
-  width: 100%;
-  border-radius: 4px;
-  border: 1px solid white;
-  padding: 10px 15px;
-  margin-bottom: 10px;
-  font-size: 14px;
+.register__header {
+    flex: 20%;
+    display: grid;
+    place-items: center;
 }
 
-.register label {
-  line-height: 2;
-  text-align: left;
-  display: block;
-  margin-bottom: 13px;
-  margin-top: 20px;
-  color: white;
-  font-size: 14px;
-  font-weight: 200;
+.register__title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 15px;
 }
 
-.register input[type='submit'] {
-  background: #ec5990;
-  color: white;
-  text-transform: uppercase;
-  border: none;
-  margin-top: 40px;
-  padding: 20px;
-  font-size: 16px;
-  font-weight: 100;
-  letter-spacing: 10px;
+.register__form {
+    flex: 60%;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
 }
 
-.register input[type='submit']:hover {
-  background: #bf1650;
+.register__body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 15px;
+    padding: 15px;
+}
+
+.register__footer {
+    width: 100%;
+    margin-top: 10px;
+    flex: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+
+}
+
+.register__cta {
+
+    display: block;
+    background: #F1683F;
+    width: 150px;
+    color: var(--text-color);
+    font-family: var(--font);
+    padding: 13px 0;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 20px;
+    box-shadow: 0 2px 10px -4px rgba(0, 0, 0, 0.5);
+}
+
+.register__text {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-color);
+    position: relative;
+}
+
+.register__input {
+    padding: 15px 10px;
+    font-family: var(--font);
+    width: 100%;
+    border-radius: 6px;
+    margin-top: 10px;
+    outline: none;
+    border: none;
+
 }

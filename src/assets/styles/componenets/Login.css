@@ -4,9 +4,10 @@
     --contact-colum: repeat(8, 1fr);
     --contact-row: 1fr;
     --clip: polygon(36% 0, 100% 0, 100% 100%, 0% 100%);
-    --color-primary: #3e4f94;
+    --color-primary: #9F22E3;
     --text-color: #f6f4f4;
-    --color-error: #bf1650;
+    --color-error: #ecf602;
+    --color-secondary: #b2b4ff;
 }
 
 .login {
@@ -14,6 +15,8 @@
     display: grid;
     grid-template-columns: var(--contact-colum);
     grid-template-rows: var(--contact-row);
+    background-image: linear-gradient(to right top, #f1683f, #fa4c54, #fc2a6f, #f4008e, #df00b1, #ce00c3, #b700d5, #941ae9, #8a14ee, #7f0ff3, #720af9, #6208fe);
+
 
 }
 
@@ -35,7 +38,6 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: var(--color-primary);
     z-index: -1;
     clip-path: var(--clip);
 }
@@ -67,13 +69,6 @@
     position: relative;
 }
 
-.login__link {
-    color: var(--text-color);
-}
-
-.login__link:hover {
-    color: var(--color-primary);
-}
 
 /* importa que sea after para que se ponga despues*/
 .login__title::after {
@@ -89,8 +84,9 @@
     padding: 18px 10px;
     font-family: var(--font);
     width: 100%;
-    border: 1px solid #000;
-    border-radius: 2px;
+    border: none;
+    outline: none;
+    border-radius: 6px;
     margin-top: 10px;
 }
 
@@ -104,6 +100,7 @@
 
 .login__error {
     color: var(--color-error);
+    font-weight: 500;
 }
 
 .login__error::before {
@@ -128,13 +125,20 @@
 
 .login__cta:hover {
     cursor: pointer;
-    background-color: #b2b4ff;
+    background-color: var(--color-secondary);
 }
 
 .login__options {
     color: var(--text-color);
     display: flex;
     justify-content: space-between;
+}
+.login__link {
+    color: var(--text-color);
+}
+
+.login__link:hover {
+    color: var(--color-secondary);
 }
 
 /* ============== RESPONSIVE DESING =============== */
