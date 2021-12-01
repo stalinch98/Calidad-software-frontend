@@ -16,8 +16,6 @@
     grid-template-columns: var(--contact-colum);
     grid-template-rows: var(--contact-row);
     background-image: linear-gradient(to right top, #f1683f, #fa4c54, #fc2a6f, #f4008e, #df00b1, #ce00c3, #b700d5, #941ae9, #8a14ee, #7f0ff3, #720af9, #6208fe);
-
-
 }
 
 .login__picture {
