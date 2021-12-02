@@ -29,8 +29,19 @@ const Login = () => {
         console.log(response.data.data);
         if (response.data.data.status === 'ok') {
           delete data.password;
-          axios.post('http://localhost:3002/api/user/code', data);
-          navigate('/confirm');
+          const userCode = axios.post('http://localhost:3002/api/user/code', data);
+          userCode
+            .then((response) => response.data.hashedCode)
+            .then((hashedCode) => {
+              console.log(hashedCode);
+              const userData = {
+                hashedCode,
+                userName: response.data.data.username
+              };
+              navigate(`/confirm/${JSON.stringify(userData)}`);
+            });
+
+          /*navigate('/confirm');*/
         } else if (response.data.data.status === 'error') {
           Swal.fire({
             title: 'Access Denied',
@@ -69,11 +80,11 @@ const Login = () => {
         <img className="login__img" src={backgroundImage} alt="contact img" />
       </figure>
       <form onSubmit={handleSubmit(onSubmit)} className="login__form">
-        <h2 className="login__title">Voice Authentication Login</h2>
+        <h2 className="login__title">Iniciar Sesión</h2>
         <label className="login__text">
-          Email
+          Correo Electrónico
           <input
-            placeholder="hello@example.com"
+            placeholder="juan@gmail.com"
             className="login__input"
             {...register('email', {
               required: true,
@@ -90,7 +101,7 @@ const Login = () => {
         {errors.email?.message && <p className="login__error">{errors.email?.message}</p>}
 
         <label className="login__text">
-          Password
+          Contraseña
           <input
             type={passwordShown ? 'text' : 'password'}
             placeholder="********"
@@ -114,15 +125,15 @@ const Login = () => {
         </button>
         <section className="login__options">
           <p>
-            New in our app?{' '}
+            ¿Aun no tienes cuenta?{' '}
             <Link className="login__link" to="/register">
-              Sign up
+              Registrate
             </Link>
           </p>
           <p>
-            Forgot your password?{' '}
+            ¿Olvidaste tu contraseña?{' '}
             <Link className="login__link" to="/forgot">
-              Click here
+              Click aqui
             </Link>
           </p>
         </section>
