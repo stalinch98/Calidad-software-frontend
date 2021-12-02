@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import '../assets/styles/componenets/Register.css';
 import SignUpInfo from '../components/SignUpInfo';
 import PersonalInfo from '../components/PeronalInfo';
@@ -31,7 +30,6 @@ const Register = () => {
   /*controll of step of the page*/
   const [page, setPage] = useState(0);
   const formTitle = ['Sign Up', 'Personal Information', 'Other Information'];
-  const navigate = useNavigate();
 
   /*validacion del formulario*/
   const { form, errors, loading, response, handleChange, handleBlur, handleSubmit } =

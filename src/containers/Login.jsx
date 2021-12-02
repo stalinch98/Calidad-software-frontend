@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import '../assets/styles/componenets/Login.css';
 import backgroundImage from './../assets/img/login_img.svg';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -18,9 +20,48 @@ const Login = () => {
     formState: { errors }
   } = useForm();
 
+  const apiUrl = 'http://localhost:3002/api/user/login';
+
   const onSubmit = (data) => {
-    console.log(data);
-    navigate('/confirm');
+    axios
+      .post(apiUrl, data)
+      .then((response) => {
+        console.log(response.data.data);
+        if (response.data.data.status === 'ok') {
+          delete data.password;
+          axios.post('http://localhost:3002/api/user/code', data);
+          navigate('/confirm');
+        } else if (response.data.data.status === 'error') {
+          Swal.fire({
+            title: 'Access Denied',
+            text: 'Password or email is incorrect',
+            icon: 'error',
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Ok'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              navigate('/');
+            }
+          });
+        }
+      })
+      .catch((error) => {
+        if (error.message === 'Request failed with status code 404') {
+          Swal.fire({
+            title: 'Access Denied',
+            text: 'Password or email is incorrect',
+            icon: 'error',
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Ok'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              navigate('/');
+            }
+          });
+        }
+      });
   };
   return (
     <section className="login">
@@ -54,7 +95,7 @@ const Login = () => {
             type={passwordShown ? 'text' : 'password'}
             placeholder="********"
             className="login__input"
-            {...register('contrasena', {
+            {...register('password', {
               required: true,
               minLength: {
                 value: 6,
@@ -64,10 +105,10 @@ const Login = () => {
           />
           <i onClick={togglePasswordVisiblity} className="bx bx-show login__password--show" />
         </label>
-        {errors?.contrasena?.type === 'required' && (
+        {errors?.password?.type === 'required' && (
           <p className="login__error">Este campo es requerido</p>
         )}
-        {errors.contrasena?.message && <p className="login__error">{errors.contrasena?.message}</p>}
+        {errors.password?.message && <p className="login__error">{errors.password?.message}</p>}
         <button type="submit" className="login__cta">
           Login
         </button>

@@ -14,7 +14,7 @@ const Confirm = () => {
       <button onClick={SpeechRecognition.startListening}>Start</button>
       <button onClick={SpeechRecognition.stopListening}>Stop</button>
       <button onClick={resetTranscript}>Reset</button>
-      <p>{transcript}</p>
+      <p style={{ color: '#000000' }}>{transcript}</p>
     </section>
   );
 };
